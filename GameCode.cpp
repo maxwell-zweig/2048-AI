@@ -31,7 +31,7 @@ int main() {
             int right_reward[25] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
             int left_reward[25] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 
-            //Stores the current board position of the game
+            //Stores the current board position.
             vector<int> temp_position;
             for (int i = 0; i != 4; i++) {
                 for (int j = 0; j != 4; j++) {
@@ -40,7 +40,7 @@ int main() {
             }
             positions.push_back(temp_position);
 
-            //Selecting the best move
+            //Selects the best move.
             for (int j = 0; j != 25; j++) {
                 Game background_run;
                 background_run.set_board(game.board);
@@ -99,13 +99,13 @@ int main() {
                     action = i + 1;
                 }
             }
-            //Takes and stores the action
+            //Takes and stores the action.
             game.move_board(action);
             actions.push_back(action);
         }
 
-        //Once the game is done, converts each 4 by 4 board state into a 1 by 256 array, stores it in the file, and then appends the action taken to the end of the line
-        //Does this after each game so as to not store a massive multi-dimensional array in memory.
+        /*Once the game is finished, converts each 4 by 4 board state into a 1 by 256 array, and stores it in the file. Then appends the action taken to the end of the line
+        Does this after each game so as to not store a massive multi-dimensional array in memory.*/
         for (int count = 0; count != positions.size(); count++) {
             int transformed_observations[256];
             for (int k = 0; k != 256; k++)

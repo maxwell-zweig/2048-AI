@@ -32,7 +32,7 @@ def play_games(net: Net):
             observation=env.get_observation()
             weights=net(observation).flatten()
             #Occasionally the network chooses the same move repeatedly.
-            #In this case, the probability of that move is set to zero.
+            #In this case, the probability of that move is set to zero, and a different move is picked.
             while True:
                 action=torch.multinomial(weights, 1)
                 if env.move_board(action):

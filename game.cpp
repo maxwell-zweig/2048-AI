@@ -8,7 +8,7 @@ Game::Game() {
         insert_random();
     }
 }
-//Used in initializing the board. The first pieces can either by 2 or 4, most likely a 2.
+//Used in to initialize the board. Determines whether or not a starting piece is a 2 or 4.
 int Game::val_random() {
     uniform_int_distribution<int> int_distribution(0, 9);
     return(int_distribution(generator)%10);
@@ -40,7 +40,7 @@ void Game::insert_random() {
     if (val==0)
         board[row][col] = 4;
 }
-//Moves a slice of the board. A board slice and whether or not the slice of the board is being moved left or right.
+//Performs an action on a slice of the board, given that slice and whether it is moving right or left.
 void Game::move_arr(int arr[4], int x) {
     int filtered[4] = { 0,0,0,0 };
     if (x == 0) {
@@ -167,7 +167,7 @@ bool Game::move_board(int action) {
     return false;
 
 }
-//Checks if a slice of the board is done.
+//Checks if the game is over in that slice of the board.
 bool Game::is_done_arr(int arr[4]) {
     for (int i = 0; i != 4; i++) {
         if (arr[i] == 0)
@@ -194,7 +194,6 @@ bool Game::is_done() {
             return false;
     }
 
-    //On review of my code, clean transpose seems redundant. Could just create an array fill it vertically instead of horizontally, and then pass it to the is_done_arr function. More elegant solution.
     int(*a)[4];
     a = (int(*)[4]) clean_transpose(board);
     for (int i = 0; i != 4; i++)
@@ -221,7 +220,7 @@ void Game::print_board() {
     }
     cout << endl;
 }
-//Checks if the board position is identical to a given board position. Used in determining whether or not to insert a new piece.
+//Checks if the board position is identical to a given board position. Used in determining whether or not to insert a new piece after an action is taken.
 bool Game::is_identical(int arr[4][4]) {
     for (int i = 0; i != 4; i++) {
         for (int j = 0; j != 4; j++) {

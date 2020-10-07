@@ -8,6 +8,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
+#Creates a network with 5 convolutional layers, followed by a fully connected layer. 
+#1 layer of zero-padding is applied to the right and bottom side of the board.
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()

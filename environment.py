@@ -9,7 +9,7 @@ import math
 import torch
 
 
-#Just quickly adapted from my C++ code, so may not be the most pythonic
+#Adapted from C++ code
 class Environment():
     def __init__(self, device):
         self.board=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]

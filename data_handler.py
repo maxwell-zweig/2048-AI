@@ -7,13 +7,17 @@ Created on Mon Oct  5 23:33:59 2020
 import torch
 import pandas as pd
 
+
+
+#Reads data from a given file. 
+#The network takes 16 channel input, so the prepare_batch function reads the file and reshapes
+#it to a 4d tensor composed of 16 channeled 4 by 4 board representations.
 class Dataset():
     def __init__(self, path_observation_file, chunksize, device):
         self.path_observation_file=path_observation_file
         self.nrows=chunksize
         self.data=pd.read_csv(self.path_observation_file, iterator=True, dtype='int64')
         self.device=device
-        
         
     def prepare_batch(self):
         batch=self.data.get_chunk(self.nrows)
