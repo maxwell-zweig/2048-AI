@@ -44,7 +44,7 @@ def play_games(net: Net):
 def train(net: Net):
     optimizer=optim.Adam(params=net.parameters(), lr=0.001)
     objective=nn.CrossEntropyLoss()
-    dataset=Dataset(r'C:\Users\max-z\source\repos\GameCode\GameCode\train_data.csv', 1000, device) 
+    dataset=Dataset(r'train_data.csv', 1000, device) 
     observations, targets, is_full=dataset.prepare_batch()
     count=0
     losses=[]
